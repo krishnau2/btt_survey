@@ -20,6 +20,15 @@
   <%= @survey.status %>
 </p>
 
+<% if @survey.have_question? %>
+	<b>Questions</b>
+	<ul>
+		<% @survey.questions.each do |question| %>
+			<li><%= question.content %> - (<%= question.type_name %>)</li>
+		<% end %>
+	</ul>
+<% end %>
+
 
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>

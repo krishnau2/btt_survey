@@ -25,7 +25,8 @@ class SurveysController < ApplicationController
   # GET /surveys/new.json
   def new
     @survey = Survey.new
-
+    3.times {@survey.questions.build}
+    @options = Question.option_types
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @survey }
@@ -35,13 +36,14 @@ class SurveysController < ApplicationController
   # GET /surveys/1/edit
   def edit
     @survey = Survey.find(params[:id])
+    @options = Question.option_types
   end
 
   # POST /surveys
   # POST /surveys.json
   def create
+    @options = Question.option_types
     @survey = Survey.new(params[:survey])
-
     respond_to do |format|
       if @survey.save
         format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
@@ -56,8 +58,8 @@ class SurveysController < ApplicationController
   # PUT /surveys/1
   # PUT /surveys/1.json
   def update
+    @options = Question.option_types
     @survey = Survey.find(params[:id])
-
     respond_to do |format|
       if @survey.update_attributes(params[:survey])
         format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
