@@ -4,7 +4,7 @@ describe Survey do
   it { should respond_to :name }
   it { should respond_to :description }
   it { should respond_to :published_on }
-  it { should respond_to :status }
+  it { should respond_to :published }
 
   # it "should create with name krishna" do
 		# s = FactoryGirl.build(:survey)

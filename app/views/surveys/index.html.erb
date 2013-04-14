@@ -2,10 +2,11 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Description</th>
     <th>Published on</th>
-    <th>Status</th>
+    <th>Published</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +14,11 @@
 
 <% @surveys.each do |survey| %>
   <tr>
+    <td><%= survey.id %></td>
     <td><%= survey.name %></td>
-    <td><%= survey.description %></td>
+    <td><%= truncate(survey.description, :length => 40, :separator => '...') %></td>
     <td><%= survey.published_on %></td>
-    <td><%= survey.status %></td>
+    <td><%= survey.published %></td>
     <td><%= link_to 'Show', survey %></td>
     <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
     <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
