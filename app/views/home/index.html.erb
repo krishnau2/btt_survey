@@ -1,0 +1,9 @@
+<h1>Surveys</h1>
+<table>
+	<% @surveys.each do |survey| %>
+		<tr>
+			<td><%= survey.name %></td>
+			<td><%= truncate(survey.description, :length => 30, :separator => '...')%></td>
+		</tr>
+	<% end %>
+</table>
