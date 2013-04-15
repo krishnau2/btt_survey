@@ -7,8 +7,8 @@ describe Answer do
 
   context "when validating" do
   	before :each do 
-  		@response = FactoryGirl.build(:response_with_answers_for_easy_question)
-  		@question = FactoryGirl.create(:question)
+  		@response = FactoryGirl.build(:response)
+  		# @question = FactoryGirl.create(:question)
   	end
 
   	it "should be valid for valid data" do
