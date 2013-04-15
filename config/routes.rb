@@ -1,7 +1,9 @@
 BttSurvey::Application.routes.draw do
   get "home/index"
 
-  resources :surveys
+  resources :surveys do
+    resources :responses
+  end
 
 
   # The priority is based upon order of creation:
