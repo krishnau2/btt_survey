@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :question do
+    survey
     content "MyText"
-    survey_id { FactoryGirl.create(:survey).id }
     type 'EasyQuestion'
 
     factory :numeric_question do 
@@ -12,9 +12,8 @@ FactoryGirl.define do
       type 'DateQuestion'
     end
 
-    factory :invlaid_question do 
+    factory :invalid_question do 
       type 'InvalidQuestion'
     end
-   
   end
 end
