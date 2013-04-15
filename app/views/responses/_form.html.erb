@@ -1,0 +1,53 @@
+<p>
+  <b>Name:</b>
+  <%= @survey.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @survey.description %>
+</p>
+
+<p>
+  <b>Published on:</b>
+  <%= @survey.published_on %>
+</p>
+
+<%= nested_form_for @response, :url => survey_responses_path do |f| %>
+  <% if @response.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@response.errors.count, "error") %> prohibited this response from being saved:</h2>
+
+      <ul>
+      <% @response.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= f.hidden_field :survey_id, :value => @survey.id %>
+  <div style="background-color: yellow; marging-left: 20px;" >
+    <b><p>Questions</p></b>
+    <% i = 0 %>
+    <%= f.fields_for :answers do |answer_form| %>
+      <div class="field">
+        <%= @survey.questions[i].content %>(<%= @survey.questions[i].type_name %>):
+        <%#= answer_form.text_field :content %>
+        <% if @survey.questions[i].type == 'NumericQuestion' %>
+          <%= render 'numeric_field',  :f => answer_form %>
+        <% elsif @survey.questions[i].type == 'DateQuestion' %>
+          <%= render 'date_field',  :f => answer_form %>
+        <% else %>
+          <%= answer_form.text_area :content %>
+        <% end %>
+        <%= answer_form.hidden_field :question_id, :value => @survey.questions[i].id %>
+      </div>
+      <% i+= 1 %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

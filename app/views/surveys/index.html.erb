@@ -15,7 +15,7 @@
 <% @surveys.each do |survey| %>
   <tr>
     <td><%= survey.id %></td>
-    <td><%= survey.name %></td>
+    <td><%=link_to survey.name, new_survey_response_path(survey) %></td>
     <td><%= truncate(survey.description, :length => 40, :separator => '...') %></td>
     <td><%= survey.published_on %></td>
     <td><%= survey.published %></td>
