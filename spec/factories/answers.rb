@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :answer do
-    # response_id {FactoryGirl.create(:response_with_answers_for_easy_question).id}
     response
     question
     content "MyText"
