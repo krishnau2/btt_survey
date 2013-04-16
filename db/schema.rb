@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414122200) do
+ActiveRecord::Schema.define(:version => 20130416104709) do
 
   create_table "answers", :force => true do |t|
     t.integer  "response_id"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(:version => 20130414122200) do
     t.boolean  "published",    :default => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "user_name"
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.string   "email_verification_token"
+    t.boolean  "verified",                 :default => false
+    t.boolean  "admin",                    :default => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
 end
