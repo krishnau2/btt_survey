@@ -1,10 +1,16 @@
 BttSurvey::Application.routes.draw do
+
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "users#new", :as => "sign_up"
   get "home/index"
 
   resources :surveys do
     resources :responses
   end
 
+  resources :users
+  resources :sessions
+  match 'verification/:email_token' => 'sessions#verification'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
