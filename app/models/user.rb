@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessible :user_name, :email, :password, :password_confirmation
   attr_accessor :password
+  has_many :responses, :dependent => :destroy
 
   before_validation :downcase_email
   before_save :encrypt_password
