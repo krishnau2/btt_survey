@@ -9,11 +9,6 @@ class Response < ActiveRecord::Base
   accepts_nested_attributes_for :answers, :allow_destroy => true#, :reject_if => lambda { |a| a[:content].blank? }
 
   validates_presence_of :survey
-  # validates_presence_of :user_id
-  # validate :presence_of_answers
-
-  # private
-  # 	def presence_of_answers
-  # 		errors.add(:this, 'should have answers.') if answers.size == 0
-  # 	end
+  validates_presence_of :user
+  
 end
