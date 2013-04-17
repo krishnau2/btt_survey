@@ -24,6 +24,10 @@ end
 
 gem 'jquery-rails'
 
+group :production do
+	gem 'pg', '0.12.2'
+end
+
 group :development, :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
