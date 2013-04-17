@@ -3,7 +3,7 @@ class Survey < ActiveRecord::Base
 
   validates_presence_of :name
 
-  has_many :questions, :dependent => :destroy
+  has_many :questions, :dependent => :destroy, :inverse_of => :survey
   has_many :responses, :dependent => :destroy
   has_many :easy_questions, :dependent => :destroy
   has_many :numeric_questions, :dependent => :destroy
