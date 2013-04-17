@@ -11,6 +11,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div>
+		<table>
+			<tr>
+				<td><%=link_to "Home", home_path %></td>
+				<% if admin? %>
+					<td><%=link_to "Surveys", surveys_path %></td>
+				<% end %>
+				<td><%=link_to "Sign up", sign_up_path %></td>
+				<% if current_user %>
+					<td>
+						<%= current_user.user_name %> 
+						<%= "[Admin]" if admin? %>
+						(<%=link_to "Log out", log_out_path %>)</td>
+				<% else %>
+					<td><%=link_to "Log in", log_in_path %></td>
+				<% end %>
+			</tr>
+		</table>
+	</div>
+	<hr>
 	<p id="notice"><%= notice %></p>
 	<%= yield %>
 
