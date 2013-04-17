@@ -44,6 +44,12 @@ describe ResponsesController do
         post :create, {:survey_id => @survey.id, :response => @params}
         response.should redirect_to(survey_response_path(@survey, Response.last))
       end
+
+      it "after redirecting to created response it should show thanks message" do
+        post :create, {:survey_id => @survey.id, :response => @params}
+        response.should redirect_to(survey_response_path(@survey, Response.last))
+        flash[:notice].should_not be_blank
+      end
     end
   end
 
