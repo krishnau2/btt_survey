@@ -1,8 +1,8 @@
-<h1>Surveys</h1>
+<h1>Current Surveys</h1>
 <table>
 	<% @surveys.each do |survey| %>
 		<tr>
-			<td><%= survey.name %></td>
+			<td><%=link_to survey.name, new_survey_response_path(survey) %></td>
 			<td><%= truncate(survey.description, :length => 30, :separator => '...')%></td>
 		</tr>
 	<% end %>
