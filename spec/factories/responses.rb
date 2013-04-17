@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :response do
     survey
-    user_id 1
+    user
   end
 end
