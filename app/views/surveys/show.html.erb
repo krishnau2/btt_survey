@@ -27,6 +27,28 @@
 		<% end %>
 	</ul>
 <% end %>
+<hr>
+
+<h2>User Responses</h2>
+<table>
+  <tr>
+    <th>User</th>
+    <% @survey.questions.each do |question| %>
+      <th><%= question.content %></th>
+    <% end %>
+  </tr>
+  <% @survey.responses.each do |response| %>  
+    <tr>
+      <td><%= response.user.user_name %></td>
+      <% response.answers.each do |answer| %>
+        <td><%= answer.content %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<hr>
+
 
 
 <%#= link_to 'Edit', edit_survey_path(@survey) %> |
