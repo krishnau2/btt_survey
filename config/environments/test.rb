@@ -34,4 +34,16 @@ BttSurvey::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "lit-caverns-2792.herokuapp.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "surveybtt@gmail.com",
+    password: "test@1234"
+  }
+
+  HOST = "http://localhost:3000"
 end
