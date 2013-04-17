@@ -1,4 +1,20 @@
+<h2><%= @response.survey.name %></h2>
+<div>
+	<p><%= @response.survey.description %></p>
+</div>
 
+<table>
+	<tr>
+		<th>Question</th>
+		<th>Answer</th>
+	</tr>
+	<% @response.answers.each do |answer| %>
+		<tr>
+			<td><%= answer.question.content %></td>
+			<td><%= answer.content %></td>
+		</tr>
+	<% end %>
+</table>
 
-<%= link_to 'Back', survey_path(@survey) %>
+<%= link_to 'Back', home_path %>
 <%#= link_to 'Edit', edit_response_path(@response) %>
