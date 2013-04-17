@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 				session[:admin] = true if user.admin?
 	  		redirect_to root_url, :notice => "Logged in" 
 	  	else
-	  		flash.now[:notice] = "Email not verified."  
+	  		flash[:notice] = "Email not verified."  
 	      render "new" 	
 	  	end
 		else
@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
   	session[:user_id] = nil  
+    session[:admin] = nil
 	  redirect_to root_url, :notice => "Logged out." 
   end
 
