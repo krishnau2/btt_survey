@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+
+	skip_before_filter :authenticate
   
   def new
   end
@@ -18,6 +20,11 @@ class SessionsController < ApplicationController
 			flash.now[:notice] = "Invalid email or password"  
       render "new" 
 		end 
+  end
+
+  def destroy
+  	session[:user_id] = nil  
+	  redirect_to root_url, :notice => "Logged out." 
   end
 
   def verification
