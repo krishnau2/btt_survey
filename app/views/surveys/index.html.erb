@@ -19,7 +19,7 @@
     <td><%= truncate(survey.description, :length => 40, :separator => '...') %></td>
     <td><%= survey.published_on %></td>
     <td><%= survey.published %></td>
-    <td><%= link_to 'Show', survey %></td>
+    <td><%= link_to 'Responses', survey %></td>
     <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
     <td><%= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
