@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   def verification
   	user = User.verify_email(params[:email_token])
   	if user
-  		flash.now[:notice] = "Email verified."  
+  		flash[:notice] = "Email verified."  
   		redirect_to log_in_path
   	else
   		flash.now[:notice] = "Email not verified, Invalid details."
