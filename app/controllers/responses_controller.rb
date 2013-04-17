@@ -26,11 +26,17 @@ class ResponsesController < ApplicationController
   def new
     # @response = Response.new
     @survey = Survey.find(params[:survey_id])
-    @response = @survey.responses.build
-    @survey.questions_count.times {@response.answers.build}
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @response }
+    @response = Response.find_by_survey_id_and_user_id(@survey.id, current_user.id)
+    if @response
+      flash[:notice] = "You have already taken this survey."
+      redirect_to survey_response_path(@survey, @response)
+    else
+      @response = @survey.responses.build
+      @survey.questions_count.times {@response.answers.build}
+      respond_to do |format|
+        format.html # new.html.erb
+        format.json { render json: @response }
+      end
     end
   end
 
@@ -44,10 +50,11 @@ class ResponsesController < ApplicationController
   def create
   	@survey = Survey.find(params[:survey_id])
     @response = Response.new(params[:response])
+    @response.user = current_user
 
     respond_to do |format|
       if @response.save
-        format.html { redirect_to survey_response_path(@survey, @response), notice: 'Response was successfully created.' }
+        format.html { redirect_to survey_response_path(@survey, @response), notice: 'Thanks for your valuable time spend on this survey.' }
         format.json { render json: @response, status: :created, location: @response }
       else
         format.html { render action: "new" }
