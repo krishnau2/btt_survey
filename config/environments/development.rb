@@ -9,6 +9,16 @@ BttSurvey::Application.configure do
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "localhost.localdomain",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "surveybtt@gmail.com",
+    password: "test@1234"
+  }
+
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -34,4 +44,6 @@ BttSurvey::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  HOST = "http://localhost:3000"
 end
